@@ -37,14 +37,14 @@ public class BankApplication {
 		{
 			////////////////////////////////////////////////////
 			//
-			//   Main menu options 1 login,2create user, 3 exit
+			//   Main menu option 1 login,2create user, 3 exit
 			//
 			////////////////////////////////////////////////////
-			System.out.println("welcome to my bank app");
+			System.out.println("welcome to JDBC app");
 			System.out.println("----------------------------------");
 			System.out.println("what would you like to do");	
 			Scanner reader = new Scanner(System.in); 
-			System.out.println("press 1 for loging, press 2 to create account, press 3 to exit: ");
+			System.out.println("press 1 for logging, press 2 to create an account, press 3 to exit: ");
 			int userInput;
 			mainMenuInput = reader.nextInt();
 			////////////////////////////////////////
@@ -90,10 +90,11 @@ public class BankApplication {
 			{
 			System.out.println("create new account page");
 			System.out.println("-------------------------------");
+			System.out.println();
 			System.out.println("enter the user name:");
 			username = reader.nextLine();
 			username = reader.nextLine();
-			
+			System.out.println();
 			System.out.println("enter the password:");
 			password = reader.nextLine();
 			
@@ -106,6 +107,7 @@ public class BankApplication {
 			}
 			
 			System.out.println("user has been created");
+			System.out.println();
 			AccountsServices accountService = AccountsServices.getAccountService();
 			
 			try {
@@ -118,6 +120,11 @@ public class BankApplication {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
+			}
+			
+			if(mainMenuInput==3)
+			{
+				bankAppLive = false;
 			}
 			
 			///////////////////////////////////////////////////////
@@ -161,7 +168,7 @@ public class BankApplication {
 			//deposit
 			if(userInput==2)
 			{
-			//1System.out.println("your current balance is: "+listOfAccounts.get(3).getBalance());
+			//System.out.println("your current balance is: "+listOfAccounts.get(3).getBalance());
 			}
 			//withdraw
 			if(userInput==3)
