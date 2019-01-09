@@ -17,7 +17,7 @@ import oracle.jdbc.OracleTypes;
 public class UsersOracle implements UsersDAO{
 	
 	private static UsersOracle instance;
-
+	private List<User> listOfUsers = new ArrayList<>();
 	public static UsersDAO getDao() {
 		if(instance==null)
 		{
@@ -26,6 +26,10 @@ public class UsersOracle implements UsersDAO{
 		return instance;
 	}
 	
+	public int getSize()
+	{
+		return listOfUsers.size();
+	}
 	@Override
 	public Optional<List<User>> getAllUsers() throws SQLException {
 		Connection con = ConnectionUtil.getConnection();
@@ -35,7 +39,7 @@ public class UsersOracle implements UsersDAO{
             return Optional.empty();
         }
         Boolean getAllSuccess = false;
-        List<User> listOfUsers = new ArrayList<>();
+       // List<User> listOfUsers = new ArrayList<>();
         try {
             String SQL = "call getAllUsers(?)";
             cstmt = con.prepareCall(SQL);
@@ -100,6 +104,10 @@ public class UsersOracle implements UsersDAO{
         return Optional.of(myUser);
 	}
 
+	public List<User> getListOfUsers()
+	{
+		return listOfUsers;
+	}
 
 
 }

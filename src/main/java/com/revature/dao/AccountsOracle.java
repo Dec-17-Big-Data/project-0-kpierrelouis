@@ -106,5 +106,35 @@ public class AccountsOracle implements AccountsDAO{
 			
 	}
 	
+	public Optional<Integer> depositToAccount(int accountBalance, int accountid) throws SQLException
+	{
+		Connection con = ConnectionUtil.getConnection();
+	    if (con == null) {
+	        return Optional.empty();
+	    }
+	    CallableStatement cstmt = null;
+		 int depositAmount = 0;
+		try
+		{
+			String SQL = "call createAccount(?)";
+			cstmt = con.prepareCall(SQL);
+			cstmt.getInt(accountid);
+			cstmt.registerOutParameter(1, java.sql.Types.INTEGER);
+			Integer registerSuccess = cstmt.getInt(1);
+			if (registerSuccess==1) {
+		           depositAmount= cstmt.getInt(1);
+		          // myAccount = new Account(accountId,userId,accountBalance);
+		       } else {
+		           throw new SQLException("cant deposit amount.");
+		       }
+			
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return Optional.of(depositAmount);
+	}
+	
 
 }
