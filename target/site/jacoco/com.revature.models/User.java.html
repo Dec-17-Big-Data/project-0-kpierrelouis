@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">core</a> &gt; <a href="index.source.html" class="el_package">com.revature.models</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package com.revature.models;
+
+import java.io.Serializable;
+
+public class User implements Serializable{
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4790731165317921012L;
+	private int userID;
+	private String username;
+	private String password;
+	private int superUser;
+<span class="nc" id="L14">	public User() {}</span>
+	public User(int userID, String username, String password, int superUser) {
+<span class="fc" id="L16">		super();</span>
+<span class="fc" id="L17">		this.userID = userID;</span>
+<span class="fc" id="L18">		this.username = username;</span>
+<span class="fc" id="L19">		this.password = password;</span>
+<span class="fc" id="L20">		this.superUser = superUser;</span>
+<span class="fc" id="L21">	}</span>
+	public int getUserID() {
+<span class="nc" id="L23">		return userID;</span>
+	}
+	public void setUserID(int userID) {
+<span class="nc" id="L26">		this.userID = userID;</span>
+<span class="nc" id="L27">	}</span>
+	public String getUsername() {
+<span class="nc" id="L29">		return username;</span>
+	}
+	public void setUsername(String username) {
+<span class="nc" id="L32">		this.username = username;</span>
+<span class="nc" id="L33">	}</span>
+	public String getPassword() {
+<span class="nc" id="L35">		return password;</span>
+	}
+	public void setPassword(String password) {
+<span class="nc" id="L38">		this.password = password;</span>
+<span class="nc" id="L39">	}</span>
+	public int getSuperUser() {
+<span class="nc" id="L41">		return superUser;</span>
+	}
+	public void setSuperUser(int superUser) {
+<span class="nc" id="L44">		this.superUser = superUser;</span>
+<span class="nc" id="L45">	}</span>
+	public static long getSerialversionuid() {
+<span class="nc" id="L47">		return serialVersionUID;</span>
+	}
+	@Override
+	public int hashCode() {
+<span class="nc" id="L51">		final int prime = 31;</span>
+<span class="nc" id="L52">		int result = 1;</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">		result = prime * result + ((password == null) ? 0 : password.hashCode());</span>
+<span class="nc" id="L54">		result = prime * result + superUser;</span>
+<span class="nc" id="L55">		result = prime * result + userID;</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">		result = prime * result + ((username == null) ? 0 : username.hashCode());</span>
+<span class="nc" id="L57">		return result;</span>
+	}
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L61" title="All 2 branches missed.">		if (this == obj)</span>
+<span class="nc" id="L62">			return true;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">		if (obj == null)</span>
+<span class="nc" id="L64">			return false;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="nc" id="L66">			return false;</span>
+<span class="nc" id="L67">		User other = (User) obj;</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">		if (password == null) {</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">			if (other.password != null)</span>
+<span class="nc" id="L70">				return false;</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">		} else if (!password.equals(other.password))</span>
+<span class="nc" id="L72">			return false;</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">		if (superUser != other.superUser)</span>
+<span class="nc" id="L74">			return false;</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">		if (userID != other.userID)</span>
+<span class="nc" id="L76">			return false;</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">		if (username == null) {</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">			if (other.username != null)</span>
+<span class="nc" id="L79">				return false;</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		} else if (!username.equals(other.username))</span>
+<span class="nc" id="L81">			return false;</span>
+<span class="nc" id="L82">		return true;</span>
+	}
+	@Override
+	public String toString() {
+<span class="nc" id="L86">		return &quot;User [userID=&quot; + userID + &quot;, username=&quot; + username + &quot;, password=&quot; + password + &quot;, superUser=&quot;</span>
+<span class="nc" id="L87">				+ superUser + &quot;]&quot;;</span>
+	}
+
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

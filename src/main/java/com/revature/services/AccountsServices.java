@@ -1,7 +1,9 @@
 package com.revature.services;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import com.revature.dao.AccountsDAO;
@@ -22,6 +24,9 @@ public class AccountsServices {
 		
 	}
 	
+	
+	
+	
 	public static AccountsServices getAccountService()
 	{
 		// singleton is this is null create one
@@ -32,14 +37,133 @@ public class AccountsServices {
 		return account;
 	}
 	
-	public Optional<List<Account>> getAccount() throws SQLException
+	
+	public Account getAccount(Integer accountID)
 	{
-		return accountsDAO.getAllAccounts();
+		Account account = null;
+		
+		try {
+			account =accountsDAO.getAccount(accountID).get();
+			
+		}catch(NoSuchElementException e)
+		{
+			return null;
+		}
+		if(account==null)
+		{
+			return null;
+		}
+		
+		return account;
+		
+		
 	}
 	
-	public Optional<Account> createAccount(int userID, int balance) throws UsernameAlreadyExistsException
+	
+	
+	public Integer createAccount(Integer userId)
 	{
-		return accountsDAO.createAccount(userID, balance);
+		Integer account = null;
+		try
+		{
+			account = accountsDAO.callCreateAccount(userId).get();
+			
+		}catch(NoSuchElementException e)
+		{
+			return null;
+		}
+		
+		if(account==null)
+		{
+			return null;
+		}
+		
+		return account;
 	}
 	
+	
+	
+	
+	public Boolean callWithdraw(Integer balance,Integer accountID ) 
+	{
+		if(balance<=0)
+		{
+			return false;
+		}
+		
+		if(getAccount(accountID)==null)
+		{
+			return false;
+		}
+		if(accountsDAO.callWithdraw(balance, accountID) == false)
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public  Boolean callDeposit(Integer balance,Integer accountID)
+	{
+		if(balance<=0)
+		{
+			return false;
+		}
+		
+		if(getAccount(accountID)==null)
+		{
+			return false;
+		}
+		if(accountsDAO.callDeposit(balance, accountID) == false)
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public Boolean deleteAccount(Integer accountID)
+	{
+		
+		if(getAccount(accountID)==null)
+		{
+			return false;
+		}
+		if(accountsDAO.deleteAccount( accountID) == false)
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public List<Account> getAllAccounts(Integer userID)
+	{
+		List<Account> accountList = new ArrayList<Account>();
+		try {
+			accountList = accountsDAO.getAllAccounts(userID).get();
+		}catch(NoSuchElementException e)
+		{
+			return null;
+		}
+		
+		if(accountList.isEmpty())
+		{
+			return null;
+		}
+		
+		
+		return accountList;
+	}
+	
+	
+//	
+//	public Optional<List<Account>> getAccount() throws SQLException
+//	{
+//		return accountsDAO.getAllAccounts();
+//	}
+//	
+//	public Optional<Account> createAccount(int userID, int balance) throws UsernameAlreadyExistsException
+//	{
+//		return accountsDAO.createAccount(userID, balance);
+//	}
+//	
 }

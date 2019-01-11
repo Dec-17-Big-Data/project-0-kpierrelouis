@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountsOracle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">core</a> &gt; <a href="index.source.html" class="el_package">com.revature.dao</a> &gt; <span class="el_source">AccountsOracle.java</span></div><h1>AccountsOracle.java</h1><pre class="source lang-java linenums">package com.revature.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import java.util.Optional;
+
+import com.revature.bankApp.ConnectionUtil;
+import com.revature.exceptions.UsernameAlreadyExistsException;
+import com.revature.models.Account;
+import com.revature.models.User;
+
+import oracle.jdbc.OracleTypes;
+
+<span class="nc" id="L19">public class AccountsOracle implements AccountsDAO{</span>
+
+	private static AccountsOracle instance;
+
+	// all oracles return their DAOs
+	public static AccountsDAO getDao()
+	{
+<span class="nc bnc" id="L26" title="All 2 branches missed.">		if(instance==null)</span>
+		{
+<span class="nc" id="L28">			instance = new AccountsOracle();</span>
+		}
+<span class="nc" id="L30">		return instance;</span>
+	}
+
+	@Override
+	public Optional&lt;List&lt;Account&gt;&gt; getAllAccounts() throws SQLException {
+<span class="nc" id="L35">		Connection con = ConnectionUtil.getConnection();</span>
+        
+<span class="nc" id="L37">        CallableStatement cstmt = null;</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if (con == null) {</span>
+<span class="nc" id="L39">            return Optional.empty();</span>
+        }
+<span class="nc" id="L41">        Boolean getAllSuccess = false;</span>
+<span class="nc" id="L42">        List&lt;Account&gt; listOfAccounts = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="nc" id="L44">            String SQL = &quot;call getAllAccounts(?)&quot;;</span>
+<span class="nc" id="L45">            cstmt = con.prepareCall(SQL);</span>
+<span class="nc" id="L46">            cstmt.registerOutParameter(1, OracleTypes.CURSOR);</span>
+<span class="nc" id="L47">            cstmt.execute();</span>
+<span class="nc" id="L48">            ResultSet rs = (ResultSet) cstmt.getObject(1);</span>
+            
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="nc" id="L51">                listOfAccounts.add(new Account(rs.getInt(&quot;account_id&quot;),rs.getInt(&quot;user_id&quot;),rs.getInt(&quot;balance&quot;)));</span>
+            }
+<span class="nc" id="L53">            getAllSuccess = true;</span>
+<span class="nc" id="L54">        } catch (SQLException e) {</span>
+           // logger.catching(e);
+<span class="nc" id="L56">            getAllSuccess = false;</span>
+<span class="nc" id="L57">        } finally {</span>
+            try {
+<span class="nc" id="L59">                cstmt.close();</span>
+<span class="nc" id="L60">            } catch (SQLException e) {</span>
+               // logger.catching(e);
+            }
+<span class="nc" id="L63">        }</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        if (getAllSuccess) {</span>
+<span class="nc" id="L65">            return Optional.of(listOfAccounts);        </span>
+        } else {
+<span class="nc" id="L67">            return Optional.empty();    </span>
+        }
+	}
+
+
+	@Override
+	public Optional&lt;Account&gt; createAccount(int userId, int accountBalance) throws UsernameAlreadyExistsException{
+<span class="nc" id="L74">	Connection con = ConnectionUtil.getConnection();</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">    if (con == null) {</span>
+<span class="nc" id="L76">        return Optional.empty();</span>
+    }
+<span class="nc" id="L78">    CallableStatement cstmt = null;</span>
+<span class="nc" id="L79">    Account myAccount = null;</span>
+    try {
+<span class="nc" id="L81">       String SQL = &quot;call createAccount(?,?,?,?)&quot;;</span>
+<span class="nc" id="L82">       cstmt = con.prepareCall(SQL);</span>
+<span class="nc" id="L83">       cstmt.setInt(1, userId);</span>
+<span class="nc" id="L84">       cstmt.setInt(2, accountBalance);</span>
+<span class="nc" id="L85">       cstmt.registerOutParameter(3, java.sql.Types.INTEGER);</span>
+<span class="nc" id="L86">       cstmt.registerOutParameter(4, java.sql.Types.INTEGER);</span>
+<span class="nc" id="L87">       cstmt.execute();</span>
+<span class="nc" id="L88">       Integer registerSuccess = cstmt.getInt(4);</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">       if (registerSuccess==1) {</span>
+<span class="nc" id="L90">           Integer accountId = cstmt.getInt(3);</span>
+<span class="nc" id="L91">           myAccount = new Account(accountId,userId,accountBalance);</span>
+<span class="nc" id="L92">       } else {</span>
+<span class="nc" id="L93">           throw new UsernameAlreadyExistsException(&quot;That account is  already in the database.&quot;);</span>
+       }
+      
+<span class="nc" id="L96">    } catch (SQLException e) {</span>
+<span class="nc" id="L97">       e.printStackTrace();</span>
+<span class="nc" id="L98">    } finally {</span>
+        try {
+<span class="nc" id="L100">            cstmt.close();</span>
+<span class="nc" id="L101">        } catch (SQLException e) {</span>
+<span class="nc" id="L102">            e.printStackTrace();</span>
+        }
+<span class="nc" id="L104">    }</span>
+<span class="nc" id="L105">    return Optional.of(myAccount);</span>
+			
+	}
+	
+	public Optional&lt;Integer&gt; depositToAccount(int accountBalance, int accountid) throws SQLException
+	{
+<span class="nc" id="L111">		Connection con = ConnectionUtil.getConnection();</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">	    if (con == null) {</span>
+<span class="nc" id="L113">	        return Optional.empty();</span>
+	    }
+<span class="nc" id="L115">	    CallableStatement cstmt = null;</span>
+<span class="nc" id="L116">		 int depositAmount = 0;</span>
+		try
+		{
+<span class="nc" id="L119">			String SQL = &quot;call createAccount(?)&quot;;</span>
+<span class="nc" id="L120">			cstmt = con.prepareCall(SQL);</span>
+<span class="nc" id="L121">			cstmt.getInt(accountid);</span>
+<span class="nc" id="L122">			cstmt.registerOutParameter(1, java.sql.Types.INTEGER);</span>
+<span class="nc" id="L123">			Integer registerSuccess = cstmt.getInt(1);</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">			if (registerSuccess==1) {</span>
+<span class="nc" id="L125">		           depositAmount = cstmt.getInt(1);</span>
+		          // myAccount = new Account(accountId,userId,accountBalance);
+<span class="nc" id="L127">		       } else {</span>
+<span class="nc" id="L128">		           throw new SQLException(&quot;cant deposit amount.&quot;);</span>
+		       }
+			
+<span class="nc" id="L131">		}catch(SQLException e)</span>
+		{
+<span class="nc" id="L133">			e.printStackTrace();</span>
+		}
+		
+<span class="nc" id="L136">		return Optional.of(depositAmount);</span>
+	}
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

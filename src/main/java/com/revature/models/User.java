@@ -10,14 +10,14 @@ public class User implements Serializable{
 	private int userID;
 	private String username;
 	private String password;
-	private int superUser;
+	
 	public User() {}
-	public User(int userID, String username, String password, int superUser) {
+	public User(int userID, String username, String password) {
 		super();
 		this.userID = userID;
 		this.username = username;
 		this.password = password;
-		this.superUser = superUser;
+		
 	}
 	public int getUserID() {
 		return userID;
@@ -37,12 +37,7 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getSuperUser() {
-		return superUser;
-	}
-	public void setSuperUser(int superUser) {
-		this.superUser = superUser;
-	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -51,7 +46,6 @@ public class User implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + superUser;
 		result = prime * result + userID;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -70,8 +64,6 @@ public class User implements Serializable{
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (superUser != other.superUser)
-			return false;
 		if (userID != other.userID)
 			return false;
 		if (username == null) {
@@ -83,8 +75,7 @@ public class User implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "User [userID=" + userID + ", username=" + username + ", password=" + password + ", superUser="
-				+ superUser + "]";
+		return "User [userID=" + userID + ", username=" + username + ", password=" + password + "]";
 	}
 
 	

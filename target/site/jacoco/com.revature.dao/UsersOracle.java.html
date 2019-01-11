@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsersOracle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">core</a> &gt; <a href="index.source.html" class="el_package">com.revature.dao</a> &gt; <span class="el_source">UsersOracle.java</span></div><h1>UsersOracle.java</h1><pre class="source lang-java linenums">package com.revature.dao;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import com.revature.bankApp.ConnectionUtil;
+import com.revature.exceptions.UsernameAlreadyExistsException;
+import com.revature.models.User;
+
+import oracle.jdbc.OracleTypes;
+
+<span class="fc" id="L17">public class UsersOracle implements UsersDAO{</span>
+	
+	private static UsersOracle instance;
+<span class="fc" id="L20">	private List&lt;User&gt; listOfUsers = new ArrayList&lt;&gt;();</span>
+	public static UsersDAO getDao() {
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">		if(instance==null)</span>
+		{
+<span class="fc" id="L24">			instance = new UsersOracle();</span>
+		}
+<span class="fc" id="L26">		return instance;</span>
+	}
+	
+	public int getSize()
+	{
+<span class="nc" id="L31">		return listOfUsers.size();</span>
+	}
+	@Override
+	public Optional&lt;List&lt;User&gt;&gt; getAllUsers() throws SQLException {
+<span class="nc" id="L35">		Connection con = ConnectionUtil.getConnection();</span>
+        
+<span class="nc" id="L37">        CallableStatement cstmt = null;</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if (con == null) {</span>
+<span class="nc" id="L39">            return Optional.empty();</span>
+        }
+<span class="nc" id="L41">        Boolean getAllSuccess = false;</span>
+       // List&lt;User&gt; listOfUsers = new ArrayList&lt;&gt;();
+        try {
+<span class="nc" id="L44">            String SQL = &quot;call getAllUsers(?)&quot;;</span>
+<span class="nc" id="L45">            cstmt = con.prepareCall(SQL);</span>
+<span class="nc" id="L46">            cstmt.registerOutParameter(1, OracleTypes.CURSOR);</span>
+<span class="nc" id="L47">            cstmt.execute();</span>
+<span class="nc" id="L48">            ResultSet rs = (ResultSet) cstmt.getObject(1);</span>
+            
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="nc" id="L51">                listOfUsers.add(new User(rs.getInt(&quot;user_id&quot;),rs.getString(&quot;username&quot;),rs.getString(&quot;password&quot;),rs.getInt(&quot;superuser&quot;)));</span>
+            }
+<span class="nc" id="L53">            getAllSuccess = true;</span>
+<span class="nc" id="L54">        } catch (SQLException e) {</span>
+           // logger.catching(e);
+<span class="nc" id="L56">            getAllSuccess = false;</span>
+<span class="nc" id="L57">        } finally {</span>
+            try {
+<span class="nc" id="L59">                cstmt.close();</span>
+<span class="nc" id="L60">            } catch (SQLException e) {</span>
+               // logger.catching(e);
+            }
+<span class="nc" id="L63">        }</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        if (getAllSuccess) {</span>
+<span class="nc" id="L65">            return Optional.of(listOfUsers);        </span>
+        } else {
+<span class="nc" id="L67">            return Optional.empty();    </span>
+        }
+	}
+
+	@Override
+	public Optional&lt;User&gt; createUser(String username, String password) throws UsernameAlreadyExistsException {
+<span class="fc" id="L73">		Connection con = ConnectionUtil.getConnection();</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        if (con == null) {</span>
+<span class="nc" id="L75">            return Optional.empty();</span>
+        }
+<span class="fc" id="L77">        CallableStatement cstmt = null;</span>
+<span class="fc" id="L78">        User myUser = null;</span>
+        try {
+<span class="fc" id="L80">           String SQL = &quot;call CreateUser(?, ?, ?, ?)&quot;;</span>
+<span class="fc" id="L81">           cstmt = con.prepareCall(SQL);</span>
+<span class="fc" id="L82">           cstmt.setString(1, username);</span>
+<span class="fc" id="L83">           cstmt.setString(2, password);</span>
+<span class="fc" id="L84">           cstmt.registerOutParameter(3, java.sql.Types.INTEGER);</span>
+<span class="fc" id="L85">           cstmt.registerOutParameter(4, java.sql.Types.INTEGER);</span>
+<span class="fc" id="L86">           cstmt.execute();</span>
+<span class="fc" id="L87">           Integer registerSuccess = cstmt.getInt(4);</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">           if (registerSuccess==1) {</span>
+<span class="fc" id="L89">               Integer userID = cstmt.getInt(3);</span>
+<span class="fc" id="L90">               myUser = new User(userID,username,password,0);</span>
+<span class="fc" id="L91">           } else {</span>
+<span class="nc" id="L92">               throw new UsernameAlreadyExistsException(&quot;That username is already in the database.&quot;);</span>
+           }
+          
+<span class="nc" id="L95">        } catch (SQLException e) {</span>
+<span class="nc" id="L96">           e.printStackTrace();</span>
+<span class="nc" id="L97">        } finally {</span>
+            try {
+<span class="pc" id="L99">                cstmt.close();</span>
+<span class="pc" id="L100">            } catch (SQLException e) {</span>
+<span class="nc" id="L101">                e.printStackTrace();</span>
+            }
+<span class="nc" id="L103">        }</span>
+<span class="fc" id="L104">        return Optional.of(myUser);</span>
+	}
+
+	public List&lt;User&gt; getListOfUsers()
+	{
+<span class="nc" id="L109">		return listOfUsers;</span>
+	}
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
