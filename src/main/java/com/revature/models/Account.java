@@ -16,7 +16,7 @@ public class Account implements Serializable{
 	
 	public Account( int accountid,int userID, int balance) {
 		super();
-		//this.accountId = accountId;
+		this.accountId = accountid;
 		this.userID = userID;
 		this.balance = balance;
 	}
@@ -75,6 +75,14 @@ public class Account implements Serializable{
 			return false;
 		return true;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Account [accountId=" + accountId + ", userID=" + userID + ", balance=" + balance + "]";
+	}
+	
+	
 	
 	
 	

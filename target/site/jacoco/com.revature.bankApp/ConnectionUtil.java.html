@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConnectionUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">core</a> &gt; <a href="index.source.html" class="el_package">com.revature.bankApp</a> &gt; <span class="el_source">ConnectionUtil.java</span></div><h1>ConnectionUtil.java</h1><pre class="source lang-java linenums">package com.revature.bankApp;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+
+
+public class ConnectionUtil {
+
+	private static Connection connectionsInstance;
+	
+<span class="nc" id="L15">	private ConnectionUtil()</span>
+	{
+		
+<span class="nc" id="L18">	}</span>
+	
+	public static Connection getConnection()
+	{
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">		if(ConnectionUtil.connectionsInstance !=null)</span>
+		{
+<span class="nc" id="L24">			return ConnectionUtil.connectionsInstance; </span>
+		}
+<span class="fc" id="L26">		InputStream in = null;</span>
+		
+		try {
+<span class="fc" id="L29">			 Properties props = new Properties();</span>
+<span class="fc" id="L30">             in = new FileInputStream(&quot;C:\\Users\\kevin\\Revature\\Java Workspace\\JDBCBank\\src\\main\\resources\\connections.properties&quot;);</span>
+<span class="fc" id="L31">             props.load(in);</span>
+
+             // get the connection object
+<span class="fc" id="L34">             Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);</span>
+<span class="fc" id="L35">             Connection con = null;</span>
+<span class="fc" id="L36">             String endpoint = props.getProperty(&quot;jdbc.url&quot;);</span>
+<span class="fc" id="L37">             String username = props.getProperty(&quot;jdbc.username&quot;);</span>
+<span class="fc" id="L38">             String password = props.getProperty(&quot;jdbc.password&quot;);</span>
+<span class="fc" id="L39">             con = DriverManager.getConnection(endpoint, username, password);</span>
+<span class="fc" id="L40">             connectionsInstance = con;</span>
+<span class="fc" id="L41">             return con;</span>
+<span class="nc" id="L42">		}catch(Exception e) {</span>
+			
+<span class="nc" id="L44">		}finally {</span>
+			try {
+<span class="pc" id="L46">				in.close();</span>
+				//System.out.println();
+<span class="pc" id="L48">			}catch (IOException e) {</span>
+				// TODO: handle exception
+			}
+			
+<span class="nc" id="L52">		}</span>
+<span class="nc" id="L53">		return null;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

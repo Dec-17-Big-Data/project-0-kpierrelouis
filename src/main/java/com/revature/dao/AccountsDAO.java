@@ -9,7 +9,13 @@ import com.revature.models.Account;
 
 public interface AccountsDAO {
 
-	Optional<List<Account>>getAllAccounts() throws SQLException;
-	Optional<Account> createAccount(int userId, int accountBalance)  throws UsernameAlreadyExistsException;
+	public Optional<List<Account>>getAllAccounts(Integer userID);
+	public Optional<Integer> callCreateAccount(Integer userId);
+	public Optional<Account> getAccount(Integer accountID);
+	public Boolean deleteAccount(Integer accountID);
+	public Boolean callWithdraw(Integer balance,Integer accountID);
+	public Boolean callDeposit(Integer balance,Integer accountID);
+	
+	
 	
 }

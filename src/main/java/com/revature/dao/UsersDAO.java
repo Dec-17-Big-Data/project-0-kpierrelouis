@@ -8,6 +8,10 @@ import com.revature.exceptions.UsernameAlreadyExistsException;
 import com.revature.models.User;
 
 public interface UsersDAO {
-	 Optional<List<User>> getAllUsers() throws SQLException;
-	 Optional<User> createUser(String username, String password) throws UsernameAlreadyExistsException;
+	public  Optional<Integer> callCreateUser(String username, String password);
+	public Optional<User> getUser(String userName);
+	public Boolean callUpdateUser(String userName, String newName);
+	public Boolean callDeleteUser(Integer userID);
+	public Optional<List<User>> getAllUsers();
+	 
 }

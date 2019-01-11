@@ -32,13 +32,12 @@ public class ConnectionUtil {
 
              // get the connection object
              Class.forName("oracle.jdbc.driver.OracleDriver");
-             Connection con = null;
              String endpoint = props.getProperty("jdbc.url");
              String username = props.getProperty("jdbc.username");
              String password = props.getProperty("jdbc.password");
-             con = DriverManager.getConnection(endpoint, username, password);
-             connectionsInstance = con;
-             return con;
+             connectionsInstance  = DriverManager.getConnection(endpoint, username, password);
+             
+             return connectionsInstance ;
 		}catch(Exception e) {
 			
 		}finally {

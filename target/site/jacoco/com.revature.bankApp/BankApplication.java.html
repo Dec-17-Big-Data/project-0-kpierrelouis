@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BankApplication.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">core</a> &gt; <a href="index.source.html" class="el_package">com.revature.bankApp</a> &gt; <span class="el_source">BankApplication.java</span></div><h1>BankApplication.java</h1><pre class="source lang-java linenums">package com.revature.bankApp;
+
+//import java.sql.Connection;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.Scanner;
+
+import com.revature.dao.UsersOracle;
+import com.revature.exceptions.UsernameAlreadyExistsException;
+import com.revature.models.User;
+import com.revature.services.UsersService;
+import com.revature.models.Account;
+import com.revature.services.AccountsServices;
+
+<span class="nc" id="L20">public class BankApplication {</span>
+
+<span class="nc" id="L22">	private static final String lastName = null;</span>
+
+	public static void main(String[] args) throws UsernameAlreadyExistsException, SQLException {
+<span class="nc" id="L25">		String username=&quot;&quot;;</span>
+<span class="nc" id="L26">		String password =&quot;&quot;;</span>
+<span class="nc" id="L27">		int mainMenuInput =0;// main menu options</span>
+<span class="nc" id="L28">		int usersPage = 0;</span>
+<span class="nc" id="L29">		int index =0;</span>
+<span class="nc" id="L30">		boolean bankAppLive = true;</span>
+<span class="nc" id="L31">		UsersOracle oracleUser= new UsersOracle();</span>
+<span class="nc" id="L32">		User myUser = null;</span>
+<span class="nc" id="L33">		Account myAccount = null;</span>
+		Optional&lt;List&lt;User&gt;&gt; userList;
+<span class="nc" id="L35">		testDeposit();</span>
+//		while(bankAppLive)
+//		{
+//			////////////////////////////////////////////////////
+//			//
+//			//   Main menu option 1 login,2create user, 3 exit
+//			//
+//			////////////////////////////////////////////////////
+//			System.out.println(&quot;welcome to JDBC app&quot;);
+//			System.out.println(&quot;----------------------------------&quot;);
+//			System.out.println(&quot;what would you like to do&quot;);	
+//			Scanner reader = new Scanner(System.in); 
+//			System.out.println(&quot;press 1 for logging, press 2 to create an account, press 3 to exit: &quot;);
+//			int userInput;
+//			mainMenuInput = reader.nextInt();
+//			////////////////////////////////////////
+//			//    login
+//			////////////////////////////////////////
+//			if(mainMenuInput==1)
+//			{
+//			System.out.println(&quot;log in page&quot;);
+//			System.out.println(&quot;-------------------------------&quot;);
+//			System.out.println(&quot;enter the user name:&quot;);
+//			username = reader.next();
+//			reader.nextLine();
+//			System.out.println(&quot;enter the password:&quot;);
+//			password = reader.next();
+//			reader.nextLine();
+//			reader.nextLine();
+//			//testGetAllUsers();
+//			userList = oracleUser.getAllUsers();	
+//			for(User user : userList.get())
+//			{
+//			if(user.getUsername().equals(username))
+//			{
+//			myUser = user;
+//			System.out.println(&quot;you have successufuly logged in&quot;);
+//			usersPage = 1;
+//			break;
+//			}else {
+//			index++;
+//			continue;
+//			}
+//			}
+//			if(index&gt;=oracleUser.getSize())
+//			{
+//			System.out.println(&quot;your name and or password is incorrect&quot;);
+//			}	
+//			}
+//			/////////////////////////////////////////////////
+//			//
+//			//  create new account
+//			//
+//			////////////////////////////////////////////////
+//			if(mainMenuInput==2)
+//			{
+//			System.out.println(&quot;create new account page&quot;);
+//			System.out.println(&quot;-------------------------------&quot;);
+//			System.out.println();
+//			System.out.println(&quot;enter the user name:&quot;);
+//			username = reader.nextLine();
+//			username = reader.nextLine();
+//			System.out.println();
+//			System.out.println(&quot;enter the password:&quot;);
+//			password = reader.nextLine();
+//			
+//			
+//			
+//			UsersService userService = UsersService.getService();
+//			Optional&lt;User&gt; optionalUser = userService.createUser(username, password);
+//			if (optionalUser.isPresent()) {
+//			myUser = optionalUser.get();
+//			}
+//			
+//			System.out.println(&quot;user has been created&quot;);
+//			System.out.println();
+//			AccountsServices accountService = AccountsServices.getAccountService();
+//			
+//			try {
+//			Optional&lt;Account&gt; optionalAccount = accountService.createAccount(myUser.getUserID(),54321);
+//			if (optionalAccount.isPresent()) {
+//			myAccount = optionalAccount.get();
+//			
+//			}
+//			} catch (UsernameAlreadyExistsException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			}
+//			}
+//			
+//			if(mainMenuInput==3)
+//			{
+//				bankAppLive = false;
+//			}
+//			
+//			///////////////////////////////////////////////////////
+//			//
+//			// users page 1 view balance, 2 deposit, 3 withdraw, 4 exit
+//			//
+//			/////////////////////////////////////////////////////
+//			
+//			if(usersPage ==1)
+//			{
+//			System.out.println(&quot;welcome: &quot;+username);
+//			System.out.println();
+//			System.out.println(&quot; main menu&quot;);
+//			System.out.println(&quot;-------------------------&quot;);
+//			System.out.println(&quot; press 1 to view balance, press 2 to deposit , press 3 to withdraw, press 4 to exit to main menu&quot;);
+//			userInput = reader.nextInt();
+//			
+//			
+//			//view balance
+//			if(userInput ==1)
+//			{
+//			AccountsServices accountService = AccountsServices.getAccountService();
+//			List&lt;Account&gt; listOfAccounts = new ArrayList();
+//			Optional&lt;List&lt;Account&gt;&gt;optionalAccount = accountService.getAccount();
+//			if(optionalAccount.isPresent())
+//			{
+//				for(Account account: optionalAccount.get())
+//				{
+//					listOfAccounts.add(account);
+//				
+//				}
+//			}
+//
+//				if(myUser.getUserID() == listOfAccounts.get(1).getUserID())
+//				{
+//					//System.out.println(&quot;your current balance is: &quot;+listOfAccounts.get(1).getBalance());
+//					//userInput =1;
+//				}
+//			
+//			}
+//			//deposit
+//			if(userInput==2)
+//			{
+//			//System.out.println(&quot;your current balance is: &quot;+listOfAccounts.get(3).getBalance());
+//			}
+//			//withdraw
+//			if(userInput==3)
+//			{
+//			
+//			}
+//			//exit
+//			if(userInput==4)
+//			{
+//				bankAppLive = false;
+//			}
+//
+//		}
+//
+//	}	
+<span class="nc" id="L187">  }</span>
+	
+	
+	public static void testDeposit() throws SQLException
+	{
+<span class="nc" id="L192">		AccountsServices accountService = AccountsServices.getAccountService();</span>
+		int amount;
+		int id;
+<span class="nc" id="L195">		amount = 123;</span>
+<span class="nc" id="L196">		id = 2;</span>
+		/*if()
+		{
+			
+		}*/
+<span class="nc" id="L201">		System.out.println(accountService);</span>
+		
+<span class="nc" id="L203">	}</span>
+	public static void testGetAllAccounts()throws UsernameAlreadyExistsException, SQLException
+	{
+<span class="nc" id="L206">		AccountsServices accountService = AccountsServices.getAccountService();</span>
+<span class="nc" id="L207">		List&lt;Account&gt; listOfAccounts = new ArrayList();</span>
+<span class="nc" id="L208">		Optional&lt;List&lt;Account&gt;&gt;optionalAccount = accountService.getAccount();</span>
+<span class="nc bnc" id="L209" title="All 2 branches missed.">		if(optionalAccount.isPresent())</span>
+		{
+<span class="nc bnc" id="L211" title="All 2 branches missed.">			for(Account account: optionalAccount.get())</span>
+			{
+<span class="nc" id="L213">				listOfAccounts.add(account);</span>
+<span class="nc" id="L214">				System.out.println(account.getAccountId()+&quot; &quot;+account.getUserID()+&quot; &quot;+account.getBalance());</span>
+<span class="nc" id="L215">				System.out.println(account);</span>
+			}
+		}
+<span class="nc" id="L218">	}</span>
+	
+	
+	
+	public static void testCreateUser() {
+<span class="nc" id="L223">		UsersService userService = UsersService.getService();</span>
+<span class="nc" id="L224">		List&lt;User&gt; listOfUsers = new ArrayList&lt;&gt;();</span>
+		try {
+<span class="nc" id="L226">			Optional&lt;User&gt; optionalUser = userService.createUser(&quot;jason&quot;, &quot;smith&quot;);</span>
+<span class="nc bnc" id="L227" title="All 2 branches missed.">			if (optionalUser.isPresent()) {		User myUser = optionalUser.get();</span>
+<span class="nc" id="L228">				System.out.println(myUser.getUserID());</span>
+<span class="nc" id="L229">				System.out.println(myUser.getUsername());</span>
+<span class="nc" id="L230">			System.out.println(myUser.getPassword());</span>
+<span class="nc" id="L231">				System.out.println(myUser.getSuperUser());</span>
+			}
+<span class="nc" id="L233">		} catch (UsernameAlreadyExistsException e) {</span>
+			// TODO Auto-generated catch block
+<span class="nc" id="L235">			e.printStackTrace();</span>
+			}
+<span class="nc" id="L237">		}</span>
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
