@@ -75,24 +75,29 @@ public class UsersService {
 	{
 		if(getUser(userName) == null)
 		{
+			System.out.println("user doesnt exist");
 			return false;
 		}
 		
 		if(getUser(newName)!=null)
 		{
+			System.out.println("  name is already taken");
 			return false;
 		}
 		
 		if(usersDAO.callUpdateUser(userName, userName)==false)
 		{
+			System.out.println("something happend please try again");
 			return false;
 		}
 		if(getUser(newName)==null)
 		{
+			System.out.println("something happend please try again");
 			return false;
 		}
 		if(getUser(userName)!=null)
 		{
+			System.out.println("something happend please try again");
 			return false;
 		}
 		
@@ -113,7 +118,7 @@ public class UsersService {
 			return false;
 		}
 		
-		if(getUser(userName) == null)
+		if(getUser(userName)!= null)
 		{
 			return false;
 		}

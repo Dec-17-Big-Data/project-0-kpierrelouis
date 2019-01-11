@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -132,6 +133,25 @@ public class AccountsServices {
 		}
 		
 		return true;
+	}
+	
+	public List<Account> getAllAccounts(Integer userID)
+	{
+		List<Account> accountList = new ArrayList<Account>();
+		try {
+			accountList = accountsDAO.getAllAccounts(userID).get();
+		}catch(NoSuchElementException e)
+		{
+			return null;
+		}
+		
+		if(accountList.isEmpty())
+		{
+			return null;
+		}
+		
+		
+		return accountList;
 	}
 	
 	

@@ -135,3 +135,326 @@ ORA-06512: at line 1
 [TRACE] 2019-01-11 05:12:33.366 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
 [TRACE] 2019-01-11 05:12:37.908 [main] AccountsOracle - Enter calledCreateAccount
 [TRACE] 2019-01-11 05:12:37.936 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 08:47:44.117 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 08:47:46.570 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 08:48:00.770 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 08:48:00.789 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 08:48:06.290 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 08:48:06.491 [main] UsersOracle - Exit with(got user id2)
+[TRACE] 2019-01-11 08:48:14.289 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 08:48:14.309 [main] UsersOracle - Exit with(getUser User [userID=2, username=kpl, password=321])
+[TRACE] 2019-01-11 08:48:21.527 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:48:21.546 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 08:48:29.608 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:48:29.627 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 08:48:35.164 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:48:35.199 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 08:48:49.584 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:48:49.603 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 08:51:34.635 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:51:34.658 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 08:51:34.658 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 08:51:34.677 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 08:51:54.538 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:51:54.555 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 08:51:54.556 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 08:51:54.575 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 08:52:46.727 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:52:46.746 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 08:52:46.747 [main] AccountsOracle - Enter calledDeleteAccount
+[TRACE] 2019-01-11 08:52:46.765 [main] AccountsOracle - Exit with(deleteAccount success)
+[TRACE] 2019-01-11 08:52:53.653 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:52:53.670 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 08:52:57.355 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:52:57.372 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 08:52:59.428 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:52:59.446 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 08:53:18.639 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:53:18.656 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 08:53:44.994 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:53:45.016 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 08:54:02.367 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:54:02.385 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 08:54:02.386 [main] AccountsOracle - Enter calledWithdraw
+[TRACE] 2019-01-11 08:54:02.407 [main] AccountsOracle - Exit with(withdraw success)
+[TRACE] 2019-01-11 08:54:56.913 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 08:54:56.930 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 08:54:56.930 [main] AccountsOracle - Enter calledDeleteAccount
+[TRACE] 2019-01-11 08:54:56.950 [main] AccountsOracle - Exit with(deleteAccount success)
+[TRACE] 2019-01-11 08:59:15.248 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 08:59:16.124 [main] UsersOracle - Exit with(getUser User [userID=2, username=kpl, password=321])
+[TRACE] 2019-01-11 08:59:34.456 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 08:59:34.476 [main] UsersOracle - Exit with(getUser User [userID=2, username=kpl, password=321])
+[TRACE] 2019-01-11 09:00:01.175 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:00:01.199 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 09:00:11.207 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:00:11.323 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 09:01:17.949 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:01:17.971 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 09:01:26.060 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:01:26.078 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 09:01:29.500 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:01:29.519 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 09:01:35.524 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:01:35.544 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 09:02:00.486 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:02:00.505 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 09:02:22.466 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:02:22.484 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 09:19:46.701 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 09:19:47.754 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 09:20:01.724 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 09:20:03.368 [main] UsersOracle - Exit with(got user id1)
+[TRACE] 2019-01-11 09:20:13.927 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 09:20:13.947 [main] UsersOracle - Exit with(getUser User [userID=1, username=username, password=userpassword])
+[TRACE] 2019-01-11 09:20:22.578 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:20:22.665 [main] AccountsOracle - Exit with(accountList is empty)
+[TRACE] 2019-01-11 09:20:31.827 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:20:31.854 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 09:20:39.507 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:20:44.373 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:20:44.393 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 09:20:47.005 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:20:55.568 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:20:58.905 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:20:58.927 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 09:21:01.892 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:21:16.511 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:21:16.531 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 09:21:33.402 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:21:33.420 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:21:33.421 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 09:21:33.449 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 09:21:44.472 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:22:01.570 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:22:01.588 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:22:01.589 [main] AccountsOracle - Enter calledWithdraw
+[TRACE] 2019-01-11 09:22:01.611 [main] AccountsOracle - Exit with(withdraw success)
+[TRACE] 2019-01-11 09:22:13.574 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:22:13.592 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:22:13.593 [main] AccountsOracle - Enter calledDeleteAccount
+[TRACE] 2019-01-11 09:22:13.624 [main] AccountsOracle - Exit with(deleteAccount success)
+[TRACE] 2019-01-11 09:24:01.610 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 09:24:02.419 [main] UsersOracle - Exit with(getUser User [userID=1, username=username, password=userpassword])
+[TRACE] 2019-01-11 09:24:10.368 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:24:28.320 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:24:28.338 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:24:28.338 [main] AccountsOracle - Enter calledDeleteAccount
+[TRACE] 2019-01-11 09:24:28.367 [main] AccountsOracle - Exit with(deleteAccount success)
+[TRACE] 2019-01-11 09:24:47.982 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:25:09.038 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:25:09.058 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:25:09.059 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 09:25:09.077 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 09:25:18.876 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:25:32.395 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:25:32.412 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:25:32.412 [main] AccountsOracle - Enter calledDeleteAccount
+[TRACE] 2019-01-11 09:25:32.435 [main] AccountsOracle - Exit with(deleteAccount success)
+[TRACE] 2019-01-11 09:25:39.639 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:25:39.656 [main] AccountsOracle - Exit with(accountList is empty)
+[TRACE] 2019-01-11 09:38:16.536 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 09:38:17.400 [main] UsersOracle - Exit with(getUser User [userID=1, username=username, password=userpassword])
+[TRACE] 2019-01-11 09:38:35.106 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 09:38:35.126 [main] UsersOracle - Exit with(getUser User [userID=1, username=username, password=userpassword])
+[TRACE] 2019-01-11 09:39:03.494 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:39:03.517 [main] AccountsOracle - Exit with(accountList is empty)
+[TRACE] 2019-01-11 09:39:07.063 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:39:07.130 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 09:39:20.037 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:39:53.936 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:39:53.954 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:39:53.954 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 09:39:53.971 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 09:40:11.906 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:40:22.623 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:40:22.643 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:40:39.997 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:41:07.608 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:41:07.626 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:41:07.627 [main] AccountsOracle - Enter calledWithdraw
+[TRACE] 2019-01-11 09:41:07.646 [main] AccountsOracle - Exit with(withdraw success)
+[TRACE] 2019-01-11 09:41:19.019 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:41:26.958 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:41:26.979 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:41:26.980 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:41:26.997 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:41:26.998 [main] AccountsOracle - Enter calledDeleteAccount
+[TRACE] 2019-01-11 09:41:27.022 [main] AccountsOracle - Exit with(deleteAccount success)
+[TRACE] 2019-01-11 09:41:37.114 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:41:37.131 [main] AccountsOracle - Exit with(accountList is empty)
+[TRACE] 2019-01-11 09:46:21.013 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 09:46:22.100 [main] UsersOracle - Exit with(getUser User [userID=1, username=username, password=userpassword])
+[TRACE] 2019-01-11 09:46:48.152 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 09:46:48.171 [main] UsersOracle - Exit with(getUser User [userID=1, username=username, password=userpassword])
+[TRACE] 2019-01-11 09:47:15.824 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:47:15.845 [main] AccountsOracle - Exit with(accountList is empty)
+[TRACE] 2019-01-11 09:47:21.616 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:47:21.684 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 09:47:30.665 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:47:50.492 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:47:50.511 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:47:50.511 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 09:47:50.530 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 09:47:57.743 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:48:15.855 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:48:15.874 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:48:38.323 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:48:38.341 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:48:38.341 [main] AccountsOracle - Enter calledWithdraw
+[TRACE] 2019-01-11 09:48:38.361 [main] AccountsOracle - Exit with(withdraw success)
+[TRACE] 2019-01-11 09:48:44.660 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:49:04.739 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:49:04.758 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:49:04.758 [main] AccountsOracle - Enter calledWithdraw
+[TRACE] 2019-01-11 09:49:04.778 [main] AccountsOracle - Exit with(withdraw success)
+[TRACE] 2019-01-11 09:49:08.966 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:49:45.784 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:49:45.808 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:49:45.808 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 09:49:45.828 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 09:49:51.714 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:49:51.733 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:49:51.733 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 09:49:51.751 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 09:49:55.641 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:49:55.659 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:49:55.659 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 09:49:55.678 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 09:49:58.756 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:50:22.519 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:50:22.537 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:50:22.537 [main] AccountsOracle - Enter calledWithdraw
+[TRACE] 2019-01-11 09:50:22.555 [main] AccountsOracle - Exit with(withdraw success)
+[TRACE] 2019-01-11 09:50:27.036 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:50:38.431 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:50:38.448 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:50:38.448 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 09:50:38.467 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 09:50:38.467 [main] AccountsOracle - Enter calledDeleteAccount
+[TRACE] 2019-01-11 09:50:38.484 [main] AccountsOracle - Exit with(deleteAccount success)
+[TRACE] 2019-01-11 09:50:46.050 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 09:50:46.071 [main] AccountsOracle - Exit with(accountList is empty)
+[TRACE] 2019-01-11 11:29:28.744 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 11:55:33.820 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 12:26:20.443 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:26:21.338 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:26:48.348 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 12:26:48.806 [main] UsersOracle - Exit with(got user id2)
+[TRACE] 2019-01-11 12:27:22.050 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 12:34:10.040 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 12:34:10.818 [main] UsersOracle - Exit with(getUser User [userID=2, username=jason, password=smith])
+[TRACE] 2019-01-11 12:34:10.819 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:34:10.838 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:34:10.838 [main] UsersOracle - Enter callUpdateUser called
+[TRACE] 2019-01-11 12:34:11.099 [main] UsersOracle - Exit with(callUpdateUser encountered java.sql.SQLIntegrityConstraintViolationException: ORA-00001: unique constraint (KPIERRELOUIS.SYS_C005955) violated
+ORA-06512: at "KPIERRELOUIS.UPDATEUSERNAME", line 4
+ORA-06512: at line 1
+)
+[TRACE] 2019-01-11 12:36:55.772 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:36:56.640 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:37:14.062 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 12:37:14.169 [main] UsersOracle - Exit with(got user id1)
+[TRACE] 2019-01-11 12:41:08.028 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:41:08.802 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:41:37.570 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 12:41:37.621 [main] UsersOracle - Exit with(got user id2)
+[TRACE] 2019-01-11 12:41:51.544 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 12:44:16.434 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 12:44:17.266 [main] UsersOracle - Exit with(getUser User [userID=2, username=robotname, password=bender])
+[TRACE] 2019-01-11 12:44:17.267 [main] UsersOracle - Enter callDeleteUser called
+[TRACE] 2019-01-11 12:44:17.351 [main] UsersOracle - Exit with(callDeleteUser success)
+[TRACE] 2019-01-11 12:44:17.351 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:44:17.374 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:44:27.739 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:44:27.757 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:44:33.532 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:44:33.551 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:48:20.128 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:48:21.009 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:48:27.716 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 12:48:27.777 [main] UsersOracle - Exit with(got user id3)
+[TRACE] 2019-01-11 12:48:37.144 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 12:48:56.809 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 12:48:56.829 [main] UsersOracle - Exit with(getUser User [userID=3, username=luigi, password=password])
+[TRACE] 2019-01-11 12:48:56.829 [main] UsersOracle - Enter callDeleteUser called
+[TRACE] 2019-01-11 12:48:56.853 [main] UsersOracle - Exit with(callDeleteUser success)
+[TRACE] 2019-01-11 12:48:56.853 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:48:56.870 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:49:36.530 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 12:50:46.098 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:50:46.990 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:50:52.579 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 12:50:52.613 [main] UsersOracle - Exit with(got user id4)
+[TRACE] 2019-01-11 12:50:59.415 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 12:51:17.153 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 12:51:17.171 [main] UsersOracle - Exit with(getUser User [userID=4, username=sqoop, password=hadoop])
+[TRACE] 2019-01-11 12:51:17.172 [main] UsersOracle - Enter callDeleteUser called
+[TRACE] 2019-01-11 12:51:17.199 [main] UsersOracle - Exit with(callDeleteUser success)
+[TRACE] 2019-01-11 12:51:17.199 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:51:17.216 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:51:23.830 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 12:57:37.209 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:57:38.017 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:58:03.034 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:58:03.052 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:58:07.294 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 12:58:07.334 [main] UsersOracle - Exit with(got user id5)
+[TRACE] 2019-01-11 12:58:21.738 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 12:58:31.227 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 12:58:31.245 [main] UsersOracle - Exit with(getUser User [userID=5, username=sqoop, password=hadoop])
+[TRACE] 2019-01-11 12:58:31.246 [main] UsersOracle - Enter callDeleteUser called
+[TRACE] 2019-01-11 12:58:31.264 [main] UsersOracle - Exit with(callDeleteUser success)
+[TRACE] 2019-01-11 12:58:31.264 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:58:31.283 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:58:36.375 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:58:36.395 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 12:58:40.774 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 12:59:26.465 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 12:59:26.486 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 13:03:07.615 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 13:03:21.634 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 13:03:21.656 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 13:03:28.223 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 13:03:28.257 [main] UsersOracle - Exit with(got user id6)
+[TRACE] 2019-01-11 13:03:44.295 [main] UsersOracle - Enter get user called
+[ERROR] 2019-01-11 13:03:44.313 [main] UsersOracle - java.sql.SQLException: Result set after last row
+[TRACE] 2019-01-11 13:03:48.084 [main] UsersOracle - Enter create user called
+[TRACE] 2019-01-11 13:03:48.104 [main] UsersOracle - Exit with(got user id7)
+[TRACE] 2019-01-11 13:03:53.086 [main] UsersOracle - Enter get all users called
+[TRACE] 2019-01-11 13:04:18.299 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 13:04:18.316 [main] UsersOracle - Exit with(getUser User [userID=7, username=oozie, password=pig])
+[TRACE] 2019-01-11 13:04:31.448 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 13:04:31.551 [main] AccountsOracle - Exit with(accountList is empty)
+[TRACE] 2019-01-11 13:04:35.510 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 13:04:35.623 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 13:04:40.653 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 13:05:04.131 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 13:05:04.155 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 13:05:04.155 [main] AccountsOracle - Enter calledDeposit
+[TRACE] 2019-01-11 13:05:04.217 [main] AccountsOracle - Exit with(callDeposit success)
+[TRACE] 2019-01-11 13:05:13.298 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 13:05:34.128 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 13:05:34.146 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 13:05:43.582 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 13:05:56.115 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 13:05:56.134 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 13:05:56.134 [main] AccountsOracle - Enter calledWithdraw
+[TRACE] 2019-01-11 13:05:56.167 [main] AccountsOracle - Exit with(withdraw success)
+[TRACE] 2019-01-11 13:06:07.331 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 13:06:07.349 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 13:06:07.350 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 13:06:07.369 [main] AccountsOracle - Exit with(get Account success)
+[TRACE] 2019-01-11 13:06:07.370 [main] AccountsOracle - Enter calledDeleteAccount
+[TRACE] 2019-01-11 13:06:07.422 [main] AccountsOracle - Exit with(deleteAccount success)
+[TRACE] 2019-01-11 13:06:10.981 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 13:06:10.998 [main] AccountsOracle - Exit with(accountList is empty)
+[TRACE] 2019-01-11 13:06:21.497 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 13:06:21.515 [main] AccountsOracle - Exit with(callCreateAccount success)
+[TRACE] 2019-01-11 13:06:25.326 [main] AccountsOracle - Enter getAllAccounts called
+[TRACE] 2019-01-11 13:06:41.174 [main] UsersOracle - Enter get user called
+[TRACE] 2019-01-11 13:06:41.191 [main] UsersOracle - Exit with(getUser User [userID=6, username=alvin, password=chimp])
+[TRACE] 2019-01-11 13:06:54.066 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 13:06:54.084 [main] AccountsOracle - Exit with(getAccount encountered java.sql.SQLException: Result set after last row)
+[TRACE] 2019-01-11 13:06:57.505 [main] AccountsOracle - Enter calledCreateAccount
+[TRACE] 2019-01-11 13:06:57.522 [main] AccountsOracle - Exit with(get Account success)

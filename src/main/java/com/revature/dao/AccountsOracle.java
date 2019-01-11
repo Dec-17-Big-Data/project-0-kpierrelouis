@@ -31,6 +31,7 @@ public class AccountsOracle implements AccountsDAO{
 		{
 			instance = new AccountsOracle();
 		}
+		
 		return instance;
 	}
 	

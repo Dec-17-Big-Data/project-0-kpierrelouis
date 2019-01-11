@@ -1,5 +1,9 @@
 package com.revature.bankApp;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;
 //import java.sql.ResultSet;
@@ -8,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.Scanner;
 
 import com.revature.dao.AccountsOracle;
@@ -21,9 +26,9 @@ import com.revature.services.AccountsServices;
 public class BankApplication {
 
 	private static final String lastName = null;
-	static enum  states  {start,logging,createUser,user,deposit,withdraw,deleteAccount};
+	static enum  states  {start,logging,createUser,user,deposit,withdraw,deleteAccount,admin,deleteUser,updateUser,adminLogin};
 	static states state = states.start;
-	static Boolean admin= false;
+	static Boolean isAdmin= false;
 	static Boolean isLoggedIn = false;
 	static boolean bankAppLive = true;
 	static Scanner reader = new Scanner(System.in);
@@ -51,7 +56,13 @@ public class BankApplication {
 				break;
 			case createUser:
 				if(input.equals("return")) {
-					switchState(states.start);
+					if(isAdmin==true)
+					{
+						switchState(states.admin);
+					}else {
+						switchState(states.start);
+					}
+					
 				}else {
 					createUserOptions(input,reader);
 				}
@@ -89,6 +100,37 @@ public class BankApplication {
 					deleteAccountOptions(input);
 				}
 				break;
+			case admin:
+				adminOpition(input);
+				break;
+			case deleteUser:
+				if(input.equals("return"))
+				{
+					switchState(states.admin);
+				}else {
+					 deleteUser(input);
+				}
+				
+				break;
+			case updateUser:
+				if(input.equals("return"))
+				{
+					switchState(states.admin);
+				}else {
+					updateUserOptions(input);
+				}
+
+				
+				break;
+			case adminLogin:
+				if(input.equals("return"))
+				{
+					switchState(states.start);
+				}else {
+					adminLoginOptions(input);
+				}
+				
+				break;
 				
 				
 			default:
@@ -99,169 +141,7 @@ public class BankApplication {
 		
 		
 		
-//		String username="";
-//		String password ="";
-//		int mainMenuInput =0;// main menu options
-//		int usersPage = 0;
-//		int index =0;
-//		boolean bankAppLive = true;
-//		UsersOracle oracleUser= new UsersOracle();
-//		User myUser = null;
-//		Account myAccount = null;
-//		Optional<List<User>> userList;
-//		
-		//testDeposit();
-//		while(bankAppLive)
-//		{
-//			////////////////////////////////////////////////////
-//			//
-//			//   Main menu option 1 login,2create user, 3 exit
-//			//
-//			////////////////////////////////////////////////////
-//			System.out.println("welcome to JDBC app");
-//			System.out.println("----------------------------------");
-//			System.out.println("what would you like to do");	
-//			Scanner reader = new Scanner(System.in); 
-//			System.out.println("press 1 for logging, press 2 to create an account, press 3 to exit: ");
-//			int userInput;
-//			mainMenuInput = reader.nextInt();
-//			////////////////////////////////////////
-//			//    login
-//			////////////////////////////////////////
-//			if(mainMenuInput==1)
-//			{
-//			System.out.println("log in page");
-//			System.out.println("-------------------------------");
-//			System.out.println("enter the user name:");
-//			username = reader.next();
-//			reader.nextLine();
-//			System.out.println("enter the password:");
-//			password = reader.next();
-//			reader.nextLine();
-//			reader.nextLine();
-//			//testGetAllUsers();
-//			userList = oracleUser.getAllUsers();	
-//			for(User user : userList.get())
-//			{
-//			if(user.getUsername().equals(username))
-//			{
-//			myUser = user;
-//			System.out.println("you have successufuly logged in");
-//			usersPage = 1;
-//			break;
-//			}else {
-//			index++;
-//			continue;
-//			}
-//			}
-//			if(index>=oracleUser.getSize())
-//			{
-//			System.out.println("your name and or password is incorrect");
-//			}	
-//			}
-//			/////////////////////////////////////////////////
-//			//
-//			//  create new account
-//			//
-//			////////////////////////////////////////////////
-//			if(mainMenuInput==2)
-//			{
-//			System.out.println("create new account page");
-//			System.out.println("-------------------------------");
-//			System.out.println();
-//			System.out.println("enter the user name:");
-//			username = reader.nextLine();
-//			username = reader.nextLine();
-//			System.out.println();
-//			System.out.println("enter the password:");
-//			password = reader.nextLine();
-//			
-//			
-//			
-//			UsersService userService = UsersService.getService();
-//			Optional<User> optionalUser = userService.createUser(username, password);
-//			if (optionalUser.isPresent()) {
-//			myUser = optionalUser.get();
-//			}
-//			
-//			System.out.println("user has been created");
-//			System.out.println();
-//			AccountsServices accountService = AccountsServices.getAccountService();
-//			
-//			try {
-//			Optional<Account> optionalAccount = accountService.createAccount(myUser.getUserID(),54321);
-//			if (optionalAccount.isPresent()) {
-//			myAccount = optionalAccount.get();
-//			
-//			}
-//			} catch (UsernameAlreadyExistsException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			}
-//			}
-//			
-//			if(mainMenuInput==3)
-//			{
-//				bankAppLive = false;
-//			}
-//			
-//			///////////////////////////////////////////////////////
-//			//
-//			// users page 1 view balance, 2 deposit, 3 withdraw, 4 exit
-//			//
-//			/////////////////////////////////////////////////////
-//			
-//			if(usersPage ==1)
-//			{
-//			System.out.println("welcome: "+username);
-//			System.out.println();
-//			System.out.println(" main menu");
-//			System.out.println("-------------------------");
-//			System.out.println(" press 1 to view balance, press 2 to deposit , press 3 to withdraw, press 4 to exit to main menu");
-//			userInput = reader.nextInt();
-//			
-//			
-//			//view balance
-//			if(userInput ==1)
-//			{
-//			AccountsServices accountService = AccountsServices.getAccountService();
-//			List<Account> listOfAccounts = new ArrayList();
-//			Optional<List<Account>>optionalAccount = accountService.getAccount();
-//			if(optionalAccount.isPresent())
-//			{
-//				for(Account account: optionalAccount.get())
-//				{
-//					listOfAccounts.add(account);
-//				
-//				}
-//			}
-//
-//				if(myUser.getUserID() == listOfAccounts.get(1).getUserID())
-//				{
-//					//System.out.println("your current balance is: "+listOfAccounts.get(1).getBalance());
-//					//userInput =1;
-//				}
-//			
-//			}
-//			//deposit
-//			if(userInput==2)
-//			{
-//			//System.out.println("your current balance is: "+listOfAccounts.get(3).getBalance());
-//			}
-//			//withdraw
-//			if(userInput==3)
-//			{
-//			
-//			}
-//			//exit
-//			if(userInput==4)
-//			{
-//				bankAppLive = false;
-//			}
-//
-//		}
-//
-//	}	
+
   }
 	public static void view()
 	{
@@ -273,6 +153,7 @@ public class BankApplication {
 			System.out.println("1 logging");
 			System.out.println("2 create user");
 			System.out.println("3 exit");
+			System.out.println("4 admin login");
 			break;
 		case logging:
 			System.out.println("Logging In");
@@ -300,6 +181,23 @@ public class BankApplication {
 		case deleteAccount:
 			System.out.println("enter account id:");
 			break;
+		case admin:
+			System.out.println("admin options");
+			System.out.println("1 view users");
+			System.out.println("2 create user");
+			System.out.println("3 delete user");
+			System.out.println("4 update user");
+			System.out.println("5 logout");
+			break;
+		case deleteUser:
+			System.out.println(" enter username for deletion");
+			break;
+		case updateUser:
+			System.out.println("enter current username");
+			break;
+		case adminLogin:
+			System.out.println("enter admin username");
+			break;
 		default:
 			System.out.println("unknown command");
 			break;
@@ -309,6 +207,7 @@ public class BankApplication {
 	public static  void switchState(states newState)
 	{
 		state = newState;
+		System.out.println("\n\n\n\n\n");
 	}
 
 public static void	startOptions(String input)
@@ -325,6 +224,10 @@ public static void	startOptions(String input)
 	{
 		System.out.println("goodbye");
 		bankAppLive = false;
+	}
+	else if(input.equals("4"))
+	{
+		switchState(states.adminLogin);
 	}
 	else{
 		System.out.println("invalid command");
@@ -376,7 +279,7 @@ public static void createUserOptions(String input, Scanner scanner)
 		return;
 	}
 	System.out.println("user created");
-	switchState(states.logging);
+	
 	return;
 	
 }
@@ -386,7 +289,7 @@ public static void userOptions(String input)
 	{
 	
 	case "1":
-		System.out.println(accountService.getAccount(((Integer)Integer.parseInt(input))));	
+		System.out.println(accountService.getAllAccounts(currentUser.getUserID()));	
 		break;
 	case "2":
 		accountService.createAccount(currentUser.getUserID());
@@ -428,63 +331,129 @@ public static void	withdrawOptions(String input)
 }
 public static void	deleteAccountOptions(String input)
 {
-	accountService.deleteAccount((Integer)Integer.parseInt(input));
-}
+	Account account = accountService.getAccount(((Integer)Integer.parseInt(input)));
 	
-//	public static void testDeposit() throws SQLException
-//	{
-//		AccountsServices accountService = AccountsServices.getAccountService();
-//		//List<Account> listOfAccounts = new ArrayList();
-//		//Optional<List<Account>>optionalAccount = accountService.getAccount();
-//		int amount;
-//		int id = 25;
-//		amount = 123;
-//		AccountsOracle account = new AccountsOracle();
-//		//id = 2;
-//		account.depositToAccount(123, 25, amount);
-//		System.out.println(accountService);
-//		/*if(optionalAccount.isPresent())
-//		{
-//			account.depositToAccount(123, 25);
-//			System.out.println(accountService);
-//		}*/
-//		
-//		
-//	}
-//	public static void testGetAllAccounts()throws UsernameAlreadyExistsException, SQLException
-//	{
-//		AccountsServices accountService = AccountsServices.getAccountService();
-//		List<Account> listOfAccounts = new ArrayList();
-//		Optional<List<Account>>optionalAccount = accountService.getAccount();
-//		if(optionalAccount.isPresent())
-//		{
-//			for(Account account: optionalAccount.get())
-//			{
-//				listOfAccounts.add(account);
-//				System.out.println(account.getAccountId()+" "+account.getUserID()+" "+account.getBalance());
-//				System.out.println(account);
-//			}
-//		}
-//	}
-//	
-//	
-//	
-//	public static void testCreateUser() {
-//		UsersService userService = UsersService.getService();
-//		List<User> listOfUsers = new ArrayList<>();
-//		try {
-//			Optional<User> optionalUser = userService.createUser("jason", "smith");
-//			if (optionalUser.isPresent()) {		User myUser = optionalUser.get();
-//				System.out.println(myUser.getUserID());
-//				System.out.println(myUser.getUsername());
-//			System.out.println(myUser.getPassword());
-//				System.out.println(myUser.getSuperUser());
-//			}
-//		} catch (UsernameAlreadyExistsException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			}
-//		}
+	if(account==null)
+	{
+		System.out.println("could not find that account");
+		return;
+	}
+	if(account.getBalance()>0)
+	{
+		System.out.println("can't remove cause theres money");
+		return;
+		
+	}
+	
+	if(account.getUserID()!= currentUser.getUserID())
+	{
+		System.out.println(" account dosnt belong to you");
+		return;
+		
+	}
+	
+	accountService.deleteAccount((Integer)Integer.parseInt(input));
+	
+}
+
+	public static void deleteUser(String userName)
+	{
+		if(userService.callDeleteUser(userName)==false)
+		{
+			System.out.println("could not delete user");
+			return;
+		}
+		System.out.println("deleted user");
+	}
+	
+	public static void updateUserOptions(String input)
+	{
+		System.out.println(" enter a new name ");
+		String newName = reader.nextLine();
+		if (userService.callUpdateUser(input, newName)==false)
+		{
+			System.out.println("could not update user");
+			return;
+		}
+		System.out.println("user has been updated");
+		
+	}
+	
+	public static  void adminLoginOptions(String input)
+	{
+		InputStream in = null;
+		Properties props = new Properties();
+		String username = null;
+		String password = null;
+        try {
+        	in = new FileInputStream("C:\\Users\\kevin\\Revature\\Java Workspace\\JDBCBank\\src\\main\\resources\\admin.properties");
+			props.load(in);
+			  username = props.getProperty("username");
+              password = props.getProperty("password");
+			} 
+       catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        System.out.println("enter an password");
+        String  inputPassword = reader.nextLine();
+        
+        if(!inputPassword.equals(password) || !input.equals(username))
+        {
+        	System.out.println("admin could not log in");
+        	return;
+        }
+        System.out.println("admin logged in");
+        isAdmin = true;
+        switchState(states.admin);
+        
+	}
+	
+	
+	public static void adminOpition(String input)
+	{
+		if(input.equals("return"))
+		{
+			switchState(states.start);
+		}
+		switch(input)
+		{
+		case "1":
+			List<User>userList =  userService.getAllUsers();
+			if(userList.isEmpty() || userList==null)
+			{
+				System.out.println("no users found");
+				return;
+			}
+			for(int i=0; i<userList.size();i++)
+			{
+				System.out.println(userList.get(i).toString());
+			}
+			System.out.println("complete list of users");
+			break;
+		case "2":
+			switchState(states.createUser);;
+		
+			
+			break;
+		case "3":
+			switchState(states.deleteUser);
+			break;
+		case "4":
+			switchState(states.updateUser);
+			break;
+		case "5":
+			isLoggedIn = false;
+			isAdmin = false;
+			switchState(states.start);
+			
+			break;
+		 default:
+			break;
+		}
+	}
+	
+
 }
 
 
